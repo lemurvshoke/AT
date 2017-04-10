@@ -1,21 +1,31 @@
+package com.company;
+
 import java.util.Random;
 
-class Task9 {
-public static void main (String [] args) {
-System.out.println("Hello, world!");
-System.out.println("And hi again!");
+public class Main {
 
-String a = "!";
-final int MIN = 5;
-final int MAX = 50;
+            final int MIN = 5;
+            final int MAX = 50;
 
-public static int getRand(int min, int max) {
-Random rand = new Random();
-return  rand.nextInt((max - min) + 1) + min;}
+            public static int getRand(int min, int max) {
+                Random rand = new Random();
+                return rand.nextInt(max - min) + 1) + min;
+            }
 
+            public static String getExclamationMarks(int mult) {
+                String marks = " ";
+                for (int i=0; i<mult; i++) {
+                    marks += '!';
+                }
+                return marks;
+            }
 
-public String printa (int a) {
-String
+            public static void main(String[] args) {
+                int randomInt = getRand(MIN, MAX);
+                String marks = getExclamationMarks(randomInt);
+                System.out.println("Hello, World!");
+                System.out.println("And hi again!");
+                System.out.println(marks);
+            }
 
-}
-}
+        }
