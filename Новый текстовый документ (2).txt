@@ -1,32 +1,42 @@
+package com.company;
+
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
 
-class Fio {
+public class Main {
 
-public static void main (String [] args) {
+    public static void main (String [] args) {
 
-Arraylist<Integer> agelist = new Arraylist<>;
-String lastn, firstn;
-double age;
+        ArrayList<Double> agelist = new ArrayList<Double>();
 
-double sum = 0;
+        String lastn;
+        String firstn;
+        double age = 0;
+        double sum = 0;
 
-do {
-Scanner in = new Scanner(System.in);
-lastn = in.next();
-firstn = in.next();
-age = in.nextInteger();
+        Scanner sc = new Scanner(System.in);
+        do {
+            lastn = sc.next();
+            firstn = sc.next();
+            //age = sc.nextInt();
 
-} while (lastn = " ")
+        } while (lastn.equals(" "));
 
-for (double num : agelist) {sum = sum + num}
+        int i;
 
-System.out.println(Collections.max(agelist));
-System.out.println(Collections.min(agelist));
-System.out.println(sum/agelist.size);
+        for (i=0; i<agelist.size(); i++) {
+            age = sc.nextDouble();
+            agelist.add(age);
+            sum = sum + age;
+        }
 
+        System.out.println(Collections.max(agelist));
+        System.out.println(Collections.min(agelist));
+        System.out.println(sum / agelist.size());
+
+    }
 }
-}
-
 
 
 
