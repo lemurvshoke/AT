@@ -1,0 +1,163 @@
+import java.util.*;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class HomeWork {
+
+	public static void main(String[] args) {
+		String[] lines = ScanLines();
+		task1(lines);
+		task2(lines);
+		task3();
+		task4();
+	}
+
+	private static String[] ScanLines() {
+		String[] lines = null;
+
+		System.out.println("Введите количество строк: ");
+
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.nextLine();
+
+		lines = new String[n];
+
+		for (int i = 0; i < n; i++) {
+			System.out.println("Введите строку №" + (i + 1) + ": ");
+			lines[i] = sc.nextLine();
+		}
+		return lines;
+	}
+
+	private static void task1(String[] lines) {
+		int average_length = 0;
+
+		for (String s : lines) {
+			average_length += s.length();
+		}
+
+		average_length /= lines.length;
+
+		System.out.println("Строки с длиной меньше средней (" + average_length + "):");
+
+		for (String s : lines) {
+			if (s.length() < average_length) {
+				System.out.println("'" + s + "' с длиной " + s.length());
+			}
+		}
+	}
+
+	private static void task2(String[] lines) {
+		Pattern wordPattern = Pattern.compile("^[a-zA-Z]+$");
+		List<String> latins = new ArrayList<String>();
+		int latinCounter = 0;
+		for (String l : lines) {
+			Matcher wordMatcher = wordPattern.matcher(l.toLowerCase());
+			if (wordMatcher.matches()) {
+				latins.add(l);
+				latinCounter++;
+			}
+		}
+		System.out.println("Количество слов содержащих латинские символы: " + latinCounter);
+
+		List<String> result = new ArrayList<String>();
+		int vowelsCount = 0, consonantsCount = 0;
+
+		for (String ll : latins) {
+			vowelsCount = ll.replaceAll("[^aeiouAEIOU]", "").length();
+			consonantsCount = ll.replaceAll("[aeiouAEIOU]", "").length();
+			if (vowelsCount == consonantsCount)
+				result.add(ll);
+		}
+
+		System.out.println("Количество слов, где одинаково гласных и согласных: " + result.size());
+	}
+
+	private static void task3() {
+
+		System.out.println("Введите число от 1 до 12");
+		Scanner sc = new Scanner(System.in);
+		int month = sc.nextInt();
+
+		switch (month) {
+		case 1:
+			System.out.println("Январь");
+			break;
+		case 2:
+			System.out.println("Февраль");
+			break;
+		case 3:
+			System.out.println("Март");
+			break;
+		case 4:
+			System.out.println("Апрель");
+			break;
+		case 5:
+			System.out.println("Май");
+			break;
+		case 6:
+			System.out.println("Июнь");
+			break;
+		case 7:
+			System.out.println("Июль");
+			break;
+		case 8:
+			System.out.println("Август");
+			break;
+		case 9:
+			System.out.println("Сентябрь");
+			break;
+		case 10:
+			System.out.println("Октябрь");
+			break;
+		case 11:
+			System.out.println("Ноябрь");
+			break;
+		case 12:
+			System.out.println("Декабрь");
+			break;
+		}
+	}
+
+	private static void task4() {
+
+		System.out.println("Введите n матрицы: ");
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+
+		int[][] matrix = new int[n][n];
+		
+
+		
+		Random rnd = new Random();
+		int input = rnd.nextInt((2 * n +1) - 1);
+
+		System.out.println("Матрица случайных чисел");
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				matrix[i][j] = rnd.nextInt(input);
+				System.out.print(matrix[i][j] + "\t");
+			}
+			System.out.println();
+		}
+		 
+		for (int i = 0; i < n * n - 1; i++) {
+			for (int j = i; j < n * n; j++) {
+				if (matrix[(int) i / n][(int) i % n] > matrix[(int) j / n][(int) j % n]) {
+					int temp = matrix[(int) i / n][(int) i % n];
+					matrix[(int) i / n][(int) i % n] = matrix[(int) j / n][(int) j % n];
+					matrix[(int) j / n][(int) j % n] = temp;
+				}
+			}
+		}
+		System.out.println("Отсортированная матрица");
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				System.out.print(matrix[i][j] + "\t");
+			}
+			System.out.println();
+		}
+	}
+}
