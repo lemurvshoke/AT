@@ -1,0 +1,60 @@
+
+public class Directions {
+
+	enum Compass {
+		North(1000), South, East, West;
+
+		private int distance;
+
+		Compass() {
+			distance = -1;
+		}
+
+		Compass(int d) {
+			distance = d;
+		}
+
+		int getDistance() {
+			return distance;
+		}
+
+		public Compass gotCold() {
+			return North;
+		}
+
+		public Compass gotSweat() {
+			return South;
+		}
+
+		public static void printAllDirections() {
+			System.out.println("All directions: ");
+			for (Compass c : Compass.values()) 
+				System.out.println(c);
+		}
+	}
+
+	public static void main(String[] args) {
+
+		Compass.printAllDirections();
+		
+		Compass goNorth = Compass.North;
+		System.out.println("Move to North " + goNorth.getDistance() + " km.");
+
+		Compass goWest = Compass.West;
+
+		switch (goWest) {
+		case North:
+			System.out.println("Baby it's cold outside...");
+			break;
+		case South:
+			System.out.println("Vacation time!");
+			break;
+		case East:
+			System.out.println("You`d better turn on TV first!!!");
+			break;
+		case West:
+			System.out.println("Go weeeeest, life is peaceful there");
+			break;
+		}
+	}
+}
