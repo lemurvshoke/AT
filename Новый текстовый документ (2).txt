@@ -1,0 +1,44 @@
+package com.company;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+
+    public static void main (String [] args) {
+
+        ArrayList<Double> agelist = new ArrayList<Double>();
+
+        String lastn;
+        String firstn;
+        double age = 0;
+        double sum = 0;
+
+        Scanner sc = new Scanner(System.in);
+        do {
+            lastn = sc.next();
+            firstn = sc.next();
+            //age = sc.nextInt();
+
+        } while (lastn.equals(" "));
+
+        int i;
+
+        for (i=0; i<agelist.size(); i++) {
+            age = sc.nextDouble();
+            agelist.add(age);
+            sum = sum + age;
+        }
+
+        System.out.println(Collections.max(agelist));
+        System.out.println(Collections.min(agelist));
+        System.out.println(sum / agelist.size());
+
+    }
+}
+
+
+
+
+
